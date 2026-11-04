@@ -13,9 +13,14 @@ st.set_page_config(
     layout="wide"
 )
 
-# اتصال به هوش مصنوعی Groq
+# اتصال به هوش مصنوعی
+api_key = os.getenv("OPENAI_API_KEY")
+
+if not api_key:
+    api_key = st.secrets["OPENAI_API_KEY"]
+
 client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY"),
+    api_key=api_key,
     base_url="https://1xai.ir/v1"
 )
 
